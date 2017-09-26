@@ -24,10 +24,9 @@ class Game extends React.Component {
         <p>Pick two cards. If the image is the same, you have a pair! <br />
         The game is won when all pairs have been found. </p>
 
-        <Card src={this.state.cards[0].src} />
-        <Card src={this.state.cards[1].src} />
-        <Card src={this.state.cards[2].src} />
-
+        {this.state.cards.map((card) => (
+          <Card src={card.src} />
+        ))}
 
       </div>
     )
