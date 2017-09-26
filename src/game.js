@@ -2,20 +2,36 @@ import React from 'react'
 import Card from "./card"
 import Counter from "./counter"
 
+const photos = [
+  "/images/dog1.jpg",
+  "/images/dog2.jpg",
+  "/images/dog3.jpg",
+  "/images/dog4.jpg",
+  "/images/dog5.jpg",
+  "/images/dog6.jpg"
+]
 
 class Game extends React.Component {
 
 //State needs to be an object!!
-  state = {
-    cards: [
-      {src: "/images/dog1.jpg"},
-      {src: "/images/dog2.jpg"},
-      {src: "/images/dog3.jpg"},
-      {src: "/images/dog4.jpg"},
-      {src: "/images/dog5.jpg"},
-      {src: "/images/dog6.jpg"}
-    ]
+  constructor(props) {
+    super(props)
+    this.state = {
+      cards: this.setupGame()
+    }
   }
+
+  setupGame = () => {
+    return photos.map((url) => (
+      {src: url}
+    ))
+  }
+
+/*
+  renderCard = (something) => {
+    return <Card src={something.src} />
+  }
+*/
 
   render () {
     return (
