@@ -8,18 +8,6 @@ body {
   text-align: center;
 }
 
-
-.card img {
-  height: 250px;
-  float: left;
-
-  box-shadow: 10px 10px 5px #888888;
-  background-color: white;
-  margin: 15px;
-  padding: 15px;
-  border-radius: 5px;
-}
-
 .game {
   width: 90%;
   margin: auto;
@@ -32,5 +20,5 @@ body {
 }
 
 .game p {
-  padding-bottom: 500px;
+  padding-bottom: 50px;
 }

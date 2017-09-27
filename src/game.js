@@ -25,14 +25,26 @@ class Game extends React.Component {
   setupGame = () => {
     const duplicatedPhotos = photos.concat(photos)
     shuffle(duplicatedPhotos)
+    let i = 0
     return duplicatedPhotos.map((url) => ({
+      id: i++,
       src: url,
       faceUp: true,
-      isMatched:  false
+      isMatched: false
       })
     )
   }
 
+  //function for what will happen if a carid is clicked
+  //automatically gets the src as argument due to how onClick is defined in Card class
+  handleCardClick = (cardSrc) => {
+    alert("I am clicked! " + cardSrc)
+  }
+
+  renderCard = (card) => (
+    <Card src={card.src}
+    onCardClick={this.handleCardClick}/>
+  )
 
   render () {
     return (
@@ -45,9 +57,11 @@ class Game extends React.Component {
           //renders each card's backside or image
           this.state.cards.map((card) => {
             if (!card.faceUp) {
-              return <Card src={"/images/backside.jpeg"} />
+              return <Card src={"/images/backside.jpeg"}
+              onCardClick={this.handleCardClick}/>
             } else {
-              return <Card src={card.src} />
+              return <Card src={card.src}
+              onCardClick={this.handleCardClick}/>
             }
         })
       }
