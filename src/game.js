@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from "./card"
-import Counter from "./counter"
+import shuffle from "shuffle-array"
+
 
 const photos = [
   "/images/dog1.jpg",
@@ -8,7 +9,7 @@ const photos = [
   "/images/dog3.jpg",
   "/images/dog4.jpg",
   "/images/dog5.jpg",
-  "/images/dog6.jpg"
+//  "/images/dog6.jpg"
 ]
 
 class Game extends React.Component {
@@ -20,14 +21,18 @@ class Game extends React.Component {
     }
   }
 
-  setupGame = () => (
-    photos.map((url) => ({
+  //Sets up a new board cards (two of each) in random order
+  setupGame = () => {
+    const duplicatedPhotos = photos.concat(photos)
+    shuffle(duplicatedPhotos)
+    return duplicatedPhotos.map((url) => ({
       src: url,
-      faceUp: false,
-      isMatched: false
+      faceUp: true,
+      isMatched:  false
       })
     )
-  )
+  }
+
 
   render () {
     return (
