@@ -13,7 +13,6 @@ const photos = [
 
 class Game extends React.Component {
 
-//State needs to be an object!!
   constructor(props) {
     super(props)
     this.state = {
@@ -21,17 +20,14 @@ class Game extends React.Component {
     }
   }
 
-  setupGame = () => {
-    return photos.map((url) => (
-      {src: url}
-    ))
-  }
-
-/*
-  renderCard = (something) => {
-    return <Card src={something.src} />
-  }
-*/
+  setupGame = () => (
+    photos.map((url) => ({
+      src: url,
+      faceUp: false,
+      isMatched: false
+      })
+    )
+  )
 
   render () {
     return (
@@ -40,14 +36,38 @@ class Game extends React.Component {
         <p>Pick two cards. If the image is the same, you have a pair! <br />
         The game is won when all pairs have been found. </p>
 
-        {this.state.cards.map((card) => (
-          <Card src={card.src} />
-        ))}
+        {
+          //renders each card's backside or image
+          this.state.cards.map((card) => {
+            if (!card.faceUp) {
+              return <Card src={"/images/backside.jpeg"} />
+            } else {
+              return <Card src={card.src} />
+            }
+        })
+      }
 
       </div>
     )
   }
 
+/*
+render () {
+  return (
+    <div className="game">
+      <h1>Memory </h1>
+      <p>Pick two cards. If the image is the same, you have a pair! <br />
+      The game is won when all pairs have been found. </p>
+
+
+      {this.state.cards.map((card) => (
+        <Card src={card.src} />
+      ))}
+
+    </div>
+  )
+}
+*/
 }
 
 
