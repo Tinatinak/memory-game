@@ -12,7 +12,7 @@ class Card extends React.Component {
   //this will handle the onCardClick function which was passed into
   //the Card class from the Game class
   handleClick = () => (
-    this.props.onCardClick(this.props.src)
+    this.props.onCardClick(this.props.id)
   )
 
   render () {
