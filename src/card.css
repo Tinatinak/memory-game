@@ -12,11 +12,14 @@
   display: block;
 }
 
+.card.isMatched {
+  visibility: hidden;
+}
+
 .card.faceDown {
   background-image: url("/images/backside.jpeg");
 }
 
 .card.faceDown img {
   visibility: hidden;
-
 }

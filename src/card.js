@@ -16,8 +16,10 @@ class Card extends React.Component {
     return this.props.onCardClick(this.props.id)
   }
 
-  setClassName = () => {
-    if (this.props.faceUp) {
+  getClassName = () => {
+    if (this.props.isMatched) {
+      return "card isMatched"
+    } else if (this.props.faceUp) {
       return "card faceUp"
     } else {
       return "card faceDown"
@@ -26,8 +28,8 @@ class Card extends React.Component {
 
   render () {
     return (
-      <div className={this.setClassName()} onClick={this.handleClick}>
-      <img src={this.props.src} />
+      <div className={this.getClassName()} onClick={this.handleClick}>
+      <img src={this.props.src} alt={this.props.id}/>
       </div>
     )
   }
