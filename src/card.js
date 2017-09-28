@@ -11,13 +11,22 @@ class Card extends React.Component {
 
   //this will handle the onCardClick function which was passed into
   //the Card class from the Game class
-  handleClick = () => (
-    this.props.onCardClick(this.props.id)
-  )
+
+  handleClick = () => {
+    return this.props.onCardClick(this.props.id)
+  }
+
+  setClassName = () => {
+    if (this.props.faceUp) {
+      return "card faceUp"
+    } else {
+      return "card faceDown"
+    }
+  }
 
   render () {
     return (
-      <div className="card" onClick={this.handleClick}>
+      <div className={this.setClassName()} onClick={this.handleClick}>
       <img src={this.props.src} />
       </div>
     )
