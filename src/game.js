@@ -114,13 +114,12 @@ class Game extends React.Component {
   render () {
 
     let myComponent = (
-    <div>
+    <p>
     <SuccessMessage />
     <button id="resetButton" onClick={this.resetGame}>Play again!</button>
-    </div>
+    </p>
     )
     if (!this.gameFinished()) {
-
       myComponent = (
         <div>
         <p>Pick two cards. If the image is the same, you have a pair! <br />
