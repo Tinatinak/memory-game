@@ -16,6 +16,7 @@ class Card extends React.Component {
     return this.props.onCardClick(this.props.id)
   }
 
+  //different classnames gives different css properties
   getClassName = () => {
     if (this.props.isMatched) {
       return "card isMatched"
