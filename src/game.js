@@ -7,11 +7,13 @@ import SuccessMessage from "./successMessage"
 const photos = [
   "/images/dog1.jpg",
   "/images/dog2.jpg",
-  //"/images/dog3.jpg",
-  //"/images/dog4.jpg",
+  "/images/dog3.jpg",
+  "/images/dog4.jpg",
   //"/images/dog5.jpg",
   //"/images/dog6.jpg"
 ]
+
+let numberOfAttempts=0
 
 class Game extends React.Component {
 
@@ -24,6 +26,7 @@ class Game extends React.Component {
 
   //Sets up a new board cards (two of each) in random order
   setupGame = () => {
+    numberOfAttempts=0
     const duplicatedPhotos = photos.concat(photos)
     shuffle(duplicatedPhotos)
     return duplicatedPhotos.map((url) => ({
@@ -77,6 +80,8 @@ class Game extends React.Component {
     })
     //checks if there are two cards open and if they match
     if (openCards.length === 2) {
+      numberOfAttempts++
+      console.log(numberOfAttempts)
       if (openCards[0].src === openCards[1].src) {
         openCards[0].isMatched = true
         openCards[1].isMatched = true
@@ -124,7 +129,10 @@ class Game extends React.Component {
         <div>
         <p>Pick two cards. If the image is the same, you have a pair! <br />
         The game is won when all pairs have been found. </p>
+
         {this.state.cards.map(this.makeCardJSX)}
+
+        <p>Number of attempts: {numberOfAttempts} </p>
         </div>
       )
     }
