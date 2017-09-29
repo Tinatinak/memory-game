@@ -1,5 +1,5 @@
-body {
-  height: 200%;
+html {
+  height: 100%;
   font-family: 'Nunito', sans-serif;
   background-image: url("/images/background.jpeg");
   background-size: cover;
